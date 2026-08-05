@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c88a604-1c9f-4952-91ba-df8d57285601" name="Changes" comment="Very tiny changes, just some edits and additions to routes data and service, nothing works for either still though.">
+    <list default="true" id="2c88a604-1c9f-4952-91ba-df8d57285601" name="Changes" comment="Routes service and route data fully finished, renamed the Weather class to Weather_Service for clarification. Will add notes for each line of code later.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/route_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/route_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/routes_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/routes_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/map_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/route_generation.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/routes_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/routes_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +36,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5,
@@ -54,6 +54,7 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.api.executor": "Run",
+    "Python.app.executor": "Run",
     "Python.main.executor": "Run",
     "Python.map stuff.executor": "Run",
     "Python.map_data.executor": "Run",
@@ -63,6 +64,7 @@
     "Python.weather_data.executor": "Run",
     "Python.weather_service.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
@@ -74,7 +76,30 @@
       <recent name="C:\Users\zacha\PycharmProjects\ai-route-creator\src\services" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.route_data">
+  <component name="RunManager" selected="Python.app">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ai-route-creator" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="map_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ai-route-creator" />
       <option name="ENV_FILES" value="" />
@@ -90,29 +115,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/models/map_data.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="maps_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="ai-route-creator" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/maps_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -192,11 +194,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.route_data" />
+        <item itemvalue="Python.app" />
         <item itemvalue="Python.routes_test" />
+        <item itemvalue="Python.route_data" />
         <item itemvalue="Python.weather_data" />
         <item itemvalue="Python.map_data" />
-        <item itemvalue="Python.maps_test" />
       </list>
     </recent_temporary>
   </component>
@@ -239,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785786654856</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Routes service and route data fully finished, renamed the Weather class to Weather_Service for clarification. Will add notes for each line of code later.">
+      <option name="closed" value="true" />
+      <created>1785900942652</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1785900942652</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -257,17 +267,7 @@
     <MESSAGE value="First code workings down, contains weather api and formatted weather data to start on weather recommendations." />
     <MESSAGE value="Added a lot of stuff, map data, maps test changed, route data and route service added (route service still WIP) and routes test. Big thing here is routes." />
     <MESSAGE value="Very tiny changes, just some edits and additions to routes data and service, nothing works for either still though." />
-    <option name="LAST_COMMIT_MESSAGE" value="Very tiny changes, just some edits and additions to routes data and service, nothing works for either still though." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>2</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Routes service and route data fully finished, renamed the Weather class to Weather_Service for clarification. Will add notes for each line of code later." />
+    <option name="LAST_COMMIT_MESSAGE" value="Routes service and route data fully finished, renamed the Weather class to Weather_Service for clarification. Will add notes for each line of code later." />
   </component>
 </project>
