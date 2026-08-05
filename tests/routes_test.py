@@ -10,11 +10,6 @@ headers = {
     "X-Goog-FieldMask": "routes.distanceMeters,routes.duration,routes.polyline"
 }
 
-'''origin_lat = input("Enter origin latitude: ")
-origin_long = input("Enter origin longitude: ")
-destination_lat = input("Enter destination latitude: ")
-destination_long = input("Enter destination longitude: ")'''
-
 data = {
     "origin": {
         "location": {
@@ -42,3 +37,10 @@ routes_json = routes_data_response.json()
 print(routes_data_response.status_code)
 print(routes_data_response.json())
 print(f'Distance: {routes_json['routes'][0]['distanceMeters']} meters')
+meters = int(routes_json['routes'][0]['distanceMeters'])
+miles = meters/1600
+time_seconds = int(routes_json['routes'][0]['duration'][0:-1])
+seconds = time_seconds%60
+minutes = time_seconds//60
+print(f'Time: {minutes} minutes and {seconds} seconds')
+print (f'{miles} miles')

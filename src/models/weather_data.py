@@ -1,7 +1,7 @@
-from src.services.weather_service import Weather #imports the Weather class from src.services.weather_service
+from src.services.weather_service import Weather_Service #imports the Weather class from src.services.weather_service
 from src.services.api import WEATHER_API_KEY #imports the api key from src.services.api
 
-weather_service = Weather(WEATHER_API_KEY) #gives the Weather class the api key to work with
+weather_service = Weather_Service(WEATHER_API_KEY) #gives the Weather class the api key to work with
 
 user_location = input('Enter your location: ') #requests location from user and saves that location into variable user_location
 

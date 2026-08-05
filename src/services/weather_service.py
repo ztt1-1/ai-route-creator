@@ -1,6 +1,6 @@
 import requests #lets the code use apis or something lol
 
-class Weather: #creates Weather class, used to find weather data
+class Weather_Service: #creates Weather class, used to find weather data
     def __init__(self, api_key): #this is the definition that takes the api key that src.models.weather_data took from src.services.api
 
         self.api_key = api_key #api key goes from tests.api to services.weather_data to here, not hardcoded for privacy lol
