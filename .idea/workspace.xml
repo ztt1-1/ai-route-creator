@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c88a604-1c9f-4952-91ba-df8d57285601" name="Changes" comment="Routes service and route data fully finished, renamed the Weather class to Weather_Service for clarification. Will add notes for each line of code later.">
+    <list default="true" id="2c88a604-1c9f-4952-91ba-df8d57285601" name="Changes" comment="Beginning work on Streamlit app and interfaces. Learning how to use Streamlit and also learning how to get data from JSON was the main goal for today/this week.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/route_generation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/routes_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/routes_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,27 +47,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.api.executor": "Run",
-    "Python.app.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.map stuff.executor": "Run",
-    "Python.map_data.executor": "Run",
-    "Python.maps_test.executor": "Run",
-    "Python.route_data.executor": "Run",
-    "Python.routes_test.executor": "Run",
-    "Python.weather_data.executor": "Run",
-    "Python.weather_service.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "run.code.analysis.last.selected.profile": "aDefault"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.api.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.map stuff.executor&quot;: &quot;Run&quot;,
+    &quot;Python.map_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.maps_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.route_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.routes_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.weather_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.weather_service.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\zacha\PycharmProjects\ai-route-creator\src\services" />
@@ -249,7 +246,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785900942652</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Beginning work on Streamlit app and interfaces. Learning how to use Streamlit and also learning how to get data from JSON was the main goal for today/this week.">
+      <option name="closed" value="true" />
+      <created>1785961933717</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1785961933717</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -268,6 +273,7 @@
     <MESSAGE value="Added a lot of stuff, map data, maps test changed, route data and route service added (route service still WIP) and routes test. Big thing here is routes." />
     <MESSAGE value="Very tiny changes, just some edits and additions to routes data and service, nothing works for either still though." />
     <MESSAGE value="Routes service and route data fully finished, renamed the Weather class to Weather_Service for clarification. Will add notes for each line of code later." />
-    <option name="LAST_COMMIT_MESSAGE" value="Routes service and route data fully finished, renamed the Weather class to Weather_Service for clarification. Will add notes for each line of code later." />
+    <MESSAGE value="Beginning work on Streamlit app and interfaces. Learning how to use Streamlit and also learning how to get data from JSON was the main goal for today/this week." />
+    <option name="LAST_COMMIT_MESSAGE" value="Beginning work on Streamlit app and interfaces. Learning how to use Streamlit and also learning how to get data from JSON was the main goal for today/this week." />
   </component>
 </project>
