@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c88a604-1c9f-4952-91ba-df8d57285601" name="Changes" comment="Website development stage, bringing map_data functionality over to the website. Created Map_Service class because I forgot to for the maps data.">
+    <list default="true" id="2c88a604-1c9f-4952-91ba-df8d57285601" name="Changes" comment="Further website development, bringing weather_data AND route_data functionality over to the website. The website now can find the distance and time it would take to walk between two coordinates, AND shows both coordinate points on a map widget. Website now looks more polished.">
+      <change afterPath="$PROJECT_DIR$/archive/map_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/archive/route_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/map_data.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/route_data.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/weather_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/archive/weather_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/map_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/map_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/routes_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/routes_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/weather_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/weather_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/maps_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/maps_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/routes_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/routes_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +43,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5,
@@ -47,29 +57,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.api.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.map stuff.executor&quot;: &quot;Run&quot;,
-    &quot;Python.map_data.executor&quot;: &quot;Run&quot;,
-    &quot;Python.maps_test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.route_data.executor&quot;: &quot;Run&quot;,
-    &quot;Python.routes_test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.weather_data.executor&quot;: &quot;Run&quot;,
-    &quot;Python.weather_service.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.api.executor": "Run",
+    "Python.app.executor": "Debug",
+    "Python.main.executor": "Run",
+    "Python.map stuff.executor": "Run",
+    "Python.map_data.executor": "Run",
+    "Python.maps_test.executor": "Run",
+    "Python.route_data.executor": "Run",
+    "Python.routes_test.executor": "Run",
+    "Python.weather_data.executor": "Run",
+    "Python.weather_service.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "run.code.analysis.last.selected.profile": "aDefault"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\zacha\PycharmProjects\ai-route-creator\archive" />
       <recent name="C:\Users\zacha\PycharmProjects\ai-route-creator\src\services" />
     </key>
   </component>
@@ -111,7 +122,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/models/map_data.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\zacha\PycharmProjects\ai-route-creator\archive\map_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -134,7 +145,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/models/route_data.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\zacha\PycharmProjects\ai-route-creator\archive\route_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -180,7 +191,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/models/weather_data.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\zacha\PycharmProjects\ai-route-creator\archive\weather_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -192,10 +203,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.app" />
-        <item itemvalue="Python.routes_test" />
         <item itemvalue="Python.route_data" />
-        <item itemvalue="Python.weather_data" />
         <item itemvalue="Python.map_data" />
+        <item itemvalue="Python.routes_test" />
+        <item itemvalue="Python.weather_data" />
       </list>
     </recent_temporary>
   </component>
@@ -270,7 +281,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786074092204</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Further website development, bringing weather_data AND route_data functionality over to the website. The website now can find the distance and time it would take to walk between two coordinates, AND shows both coordinate points on a map widget. Website now looks more polished.">
+      <option name="closed" value="true" />
+      <created>1786161154497</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1786161154497</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -292,6 +311,7 @@
     <MESSAGE value="Beginning work on Streamlit app and interfaces. Learning how to use Streamlit and also learning how to get data from JSON was the main goal for today/this week." />
     <MESSAGE value="Further putting together the Streamlit site. Coming together nicely, will likely integrate maps and APIs tomorrow." />
     <MESSAGE value="Website development stage, bringing map_data functionality over to the website. Created Map_Service class because I forgot to for the maps data." />
-    <option name="LAST_COMMIT_MESSAGE" value="Website development stage, bringing map_data functionality over to the website. Created Map_Service class because I forgot to for the maps data." />
+    <MESSAGE value="Further website development, bringing weather_data AND route_data functionality over to the website. The website now can find the distance and time it would take to walk between two coordinates, AND shows both coordinate points on a map widget. Website now looks more polished." />
+    <option name="LAST_COMMIT_MESSAGE" value="Further website development, bringing weather_data AND route_data functionality over to the website. The website now can find the distance and time it would take to walk between two coordinates, AND shows both coordinate points on a map widget. Website now looks more polished." />
   </component>
 </project>

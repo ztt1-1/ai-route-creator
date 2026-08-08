@@ -1,10 +1,10 @@
+import string
 import streamlit as st
-import pandas as pd
-from services.map_service import Map_Service
-from services.api import GOOGLE_MAPS_API_KEY
-from services.weather_service import Weather_Service #imports the Weather class from src.services.weather_service
+from services.map_service import MapService
+from services.api import GOOGLE_API_KEY
+from services.weather_service import WeatherService #imports the Weather class from src.services.weather_service
 from services.api import WEATHER_API_KEY #imports the api key from src.services.api
-from services.routes_service import Route_Service
+from services.routes_service import RouteService
 
 st.title('AI-Running-Route-Creator')
 
@@ -50,15 +50,34 @@ st.divider()
 st.header('Distance (text input)')
 distance = st.text_input('Desired distance (in miles)')
 
+alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+special_characters = string.punctuation.replace(".", "")
 if distance:
-    if int(float(distance)) <= 0 or int(float(distance)) > 30:
-        st.write('Choose a distance greater than 0 and less than or equal to 30.')
+    has_letter = False
+    has_spec = False
+    extra_dot = False
+    for letter in distance:
+        if letter in alphabet:
+            has_letter = True
+            break
+        if letter in special_characters:
+            has_spec = True
+            break
+
+    dot_test1 = distance.find(".")
+    dot_test2 = distance.rfind(".")
+    if dot_test1 != dot_test2:
+        extra_dot = True
+    if has_letter or has_spec or extra_dot:
+        st.write("Please enter a valid number.")
+    elif float(distance) <= 0 or float(distance) > 30:
+        st.write("Choose a distance greater than 0 and less than or equal to 30.")
     else:
-        st.write(f'You chose **{distance} mile(s)**')
+        st.write(f"You chose **{distance} mile(s)**")
 
 button2_press = st.button('Find Route', key="find_route_1")
 
-if button2_press and distance and 0 < int(float(distance)) <= 30:
+if button2_press and distance and not has_letter and not has_spec and not extra_dot and 0 < float(distance) <= 30:
     print(f'{distance} mile(s) chosen.')
     print(terrain)
     print(elevation)
@@ -70,63 +89,82 @@ st.divider()
 st.header('Map Data Testing')
 #testing
 
-map_service = Map_Service(GOOGLE_MAPS_API_KEY)
-weather_service = Weather_Service(WEATHER_API_KEY)
-route_service = Route_Service(GOOGLE_MAPS_API_KEY)
+map_service = MapService(GOOGLE_API_KEY)
+weather_service = WeatherService(WEATHER_API_KEY)
+route_service = RouteService(GOOGLE_API_KEY)
 
 address_origin = st.text_input("Enter origin address")
 address_destination = st.text_input("Enter destination address")
 
+origin_lat = None
+destination_lat = None
+origin_long = None
+destination_long = None
+
+#def display_weather(weather_data, location_name)
+#future zach, for the large print bodies of code that provide basically the same info, make this definition
+
+
+
+
+
+
+
+
+
+
 if address_origin:
+
     maps_data_response_ori = map_service.get_coordinates(address_origin)
 
-    origin_lat = maps_data_response_ori["results"][0]["geometry"]["location"]["lat"]
-    origin_long = maps_data_response_ori["results"][0]["geometry"]["location"]["lng"]
-    print(f'latitude: {maps_data_response_ori["results"][0]["geometry"]["location"]["lat"]}, longitude: {maps_data_response_ori["results"][0]["geometry"]["location"]["lng"]}')
+    if maps_data_response_ori['results']:
+        origin_lat = maps_data_response_ori["results"][0]["geometry"]["location"]["lat"]
+        origin_long = maps_data_response_ori["results"][0]["geometry"]["location"]["lng"]
+        print(f'latitude: {maps_data_response_ori["results"][0]["geometry"]["location"]["lat"]}, longitude: {maps_data_response_ori["results"][0]["geometry"]["location"]["lng"]}')
 
-    weather_data_response_ori = weather_service.get_weather(address_origin)
-    print(f'Temperature: {weather_data_response_ori['current']['temp_f']}F')  # prints the current temperature (F)
-    print(f'Humidity: {weather_data_response_ori['current']['humidity']}%')  # prints the current humidity
-    print(f'Wind Speed: {weather_data_response_ori['current']['wind_mph']} mph {weather_data_response_ori['current']['wind_dir']}')  # prints the current wind speed
-    print(f'UV: {weather_data_response_ori['current']['uv']}')  # prints the current uv index
+        weather_data_response_ori = weather_service.get_weather(address_origin)
 
-    st.subheader('Origin Weather')
+        st.subheader('Origin Weather')
 
-    st.write(f'Temperature: {weather_data_response_ori['current']['temp_f']}F')  # prints the current temperature (F)
-    st.write(f'Humidity: {weather_data_response_ori['current']['humidity']}%')  # prints the current humidity
-    st.write(f'Wind Speed: {weather_data_response_ori['current']['wind_mph']} mph {weather_data_response_ori['current']['wind_dir']}')  # prints the current wind speed
-    st.write(f'UV: {weather_data_response_ori['current']['uv']}')  # prints the current uv index
+        st.write(f'Temperature: {weather_data_response_ori['current']['temp_f']}F')  # prints the current temperature (F)
+        st.write(f'Humidity: {weather_data_response_ori['current']['humidity']}%')  # prints the current humidity
+        st.write(f'Wind Speed: {weather_data_response_ori['current']['wind_mph']} mph {weather_data_response_ori['current']['wind_dir']}')  # prints the current wind speed
+        st.write(f'UV: {weather_data_response_ori['current']['uv']}')  # prints the current uv index
+    else:
+        st.error('Please enter a valid origin address (must be exact)')
+        st.stop()
 else:
     st.error('Please enter a valid origin address (must be exact)')
     st.stop()
 
-maps_data_response_dest = map_service.get_coordinates(address_destination)
+
 
 if address_destination:
 
-    destination_lat = maps_data_response_dest["results"][0]["geometry"]["location"]["lat"]
-    destination_long = maps_data_response_dest["results"][0]["geometry"]["location"]["lng"]
+    maps_data_response_dest = map_service.get_coordinates(address_destination)
 
-    weather_data_response_dest = weather_service.get_weather(address_destination)
-    print(f'Temperature: {weather_data_response_dest['current']['temp_f']}F')  # prints the current temperature (F)
-    print(f'Humidity: {weather_data_response_dest['current']['humidity']}%')  # prints the current humidity
-    print(
-        f'Wind Speed: {weather_data_response_dest['current']['wind_mph']} mph {weather_data_response_dest['current']['wind_dir']}')  # prints the current wind speed
-    print(f'UV: {weather_data_response_dest['current']['uv']}')  # prints the current uv index
+    if maps_data_response_dest['results']:
+        destination_lat = maps_data_response_dest["results"][0]["geometry"]["location"]["lat"]
+        destination_long = maps_data_response_dest["results"][0]["geometry"]["location"]["lng"]
 
-    st.subheader('Destination Weather')
+        weather_data_response_dest = weather_service.get_weather(address_destination)
 
-    st.write(f'Temperature: {weather_data_response_dest['current']['temp_f']}F')  # prints the current temperature (F)
-    st.write(f'Humidity: {weather_data_response_dest['current']['humidity']}%')  # prints the current humidity
-    st.write(
-        f'Wind Speed: {weather_data_response_dest['current']['wind_mph']} mph {weather_data_response_dest['current']['wind_dir']}')  # prints the current wind speed
-    st.write(f'UV: {weather_data_response_dest['current']['uv']}')  # prints the current uv index
+        st.subheader('Destination Weather')
 
-    map_data_vis ={
-            "lat": [origin_lat, destination_lat],
-            "lon": [origin_long, destination_long],
-    }
-    st.map(map_data_vis)
+        st.write(f'Temperature: {weather_data_response_dest['current']['temp_f']}F')  # prints the current temperature (F)
+        st.write(f'Humidity: {weather_data_response_dest['current']['humidity']}%')  # prints the current humidity
+        st.write(
+            f'Wind Speed: {weather_data_response_dest['current']['wind_mph']} mph {weather_data_response_dest['current']['wind_dir']}')  # prints the current wind speed
+        st.write(f'UV: {weather_data_response_dest['current']['uv']}')  # prints the current uv index
+
+        map_data_vis ={
+                "lat": [origin_lat, destination_lat],
+                "lon": [origin_long, destination_long],
+        }
+        st.map(map_data_vis)
+    else:
+        st.error('Please enter a valid origin address (must be exact)')
+        st.stop()
 
 else:
     st.error('Please enter a valid destination address (must be exact)')

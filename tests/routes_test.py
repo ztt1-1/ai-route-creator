@@ -1,12 +1,12 @@
 import requests
-from src.services.api import GOOGLE_MAPS_API_KEY
-from src.models.map_data import origin_lat, origin_long, destination_lat, destination_long
+from src.services.api import GOOGLE_API_KEY
+from archive.map_data import origin_lat, origin_long, destination_lat, destination_long
 
 url = "https://routes.googleapis.com/directions/v2:computeRoutes"
 
 headers = {
     "Content-Type": "application/json",
-    "X-Goog-Api-Key": GOOGLE_MAPS_API_KEY,
+    "X-Goog-Api-Key": GOOGLE_API_KEY,
     "X-Goog-FieldMask": "routes.distanceMeters,routes.duration,routes.polyline"
 }
 

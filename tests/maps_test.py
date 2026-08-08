@@ -1,5 +1,5 @@
 '''import requests
-from src.services.api import GOOGLE_MAPS_API_KEY
+from src.services.api import GOOGLE_API_KEY
 
 address = input("Enter address: ")
 
@@ -7,7 +7,7 @@ url = "https://maps.googleapis.com/maps/api/geocode/json"
 
 params = {
     "address": address,
-    "key": GOOGLE_MAPS_API_KEY
+    "key": GOOGLE_API_KEY
 }
 
 maps_data_response = requests.get(url, params=params)

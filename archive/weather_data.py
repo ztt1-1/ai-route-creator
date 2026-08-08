@@ -1,11 +1,11 @@
-from src.services.weather_service import Weather_Service #imports the Weather class from src.services.weather_service
-from src.services.api import WEATHER_API_KEY #imports the api key from src.services.api
+from src.services.weather_service import WeatherService #imports the Weather class from src.services.weather_service
+from src.services.api import WEATHER_API_KEY #imports the weather api key from src.services.api
 
-weather_service = Weather_Service(WEATHER_API_KEY) #gives the Weather class the api key to work with
+class_weather_service = WeatherService(WEATHER_API_KEY) #gives the Weather class the api key to work with
 
 user_location = input('Enter your location: ') #requests location from user and saves that location into variable user_location
 
-weather_data_response = weather_service.get_weather(user_location) #weather_data is a variable that weather data that results from the storing of the api key being used for the first def in class Weather, then goes to def get_weather in class Weather, gives the inputted user_location to the class, and then runs the get request code from the Weather class
+weather_data_response = class_weather_service.get_weather(user_location) #weather_data is a variable that weather data that results from the storing of the api key being used for the first def in class Weather, then goes to def get_weather in class Weather, gives the inputted user_location to the class, and then runs the get request code from the Weather class
 
 if weather_data_response: #makes sure that if there is an error with the api key, none of the below 'print' commands try to run and then cause some errors and stuff
     print(weather_data_response) #prints full weatherdata dictionary
