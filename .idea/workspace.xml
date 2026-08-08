@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c88a604-1c9f-4952-91ba-df8d57285601" name="Changes" comment="Further putting together the Streamlit site. Coming together nicely, will likely integrate maps and APIs tomorrow.">
-      <change afterPath="$PROJECT_DIR$/src/services/map_service.py" afterDir="false" />
+    <list default="true" id="2c88a604-1c9f-4952-91ba-df8d57285601" name="Changes" comment="Website development stage, bringing map_data functionality over to the website. Created Map_Service class because I forgot to for the maps data.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
     </list>
@@ -263,7 +262,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785970301628</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Website development stage, bringing map_data functionality over to the website. Created Map_Service class because I forgot to for the maps data.">
+      <option name="closed" value="true" />
+      <created>1786074092204</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1786074092204</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -284,6 +291,7 @@
     <MESSAGE value="Routes service and route data fully finished, renamed the Weather class to Weather_Service for clarification. Will add notes for each line of code later." />
     <MESSAGE value="Beginning work on Streamlit app and interfaces. Learning how to use Streamlit and also learning how to get data from JSON was the main goal for today/this week." />
     <MESSAGE value="Further putting together the Streamlit site. Coming together nicely, will likely integrate maps and APIs tomorrow." />
-    <option name="LAST_COMMIT_MESSAGE" value="Further putting together the Streamlit site. Coming together nicely, will likely integrate maps and APIs tomorrow." />
+    <MESSAGE value="Website development stage, bringing map_data functionality over to the website. Created Map_Service class because I forgot to for the maps data." />
+    <option name="LAST_COMMIT_MESSAGE" value="Website development stage, bringing map_data functionality over to the website. Created Map_Service class because I forgot to for the maps data." />
   </component>
 </project>
