@@ -1,9 +1,10 @@
 AI Route Creator
 
+HUGE WIP, also, I am still learning the more advanced parts of python, thanks.
 - generate routes of any distance
 - results depending on elevation
 - support for out-and-backs and loops
 - sidewalk + safe road prioritization
 - AI feedback
 
-Created by Zachary (ztt1)
+Created by Zach (ztt1)
