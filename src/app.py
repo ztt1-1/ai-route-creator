@@ -1,10 +1,15 @@
 import string
 import streamlit as st
 from services.map_service import MapService
-from services.api import GOOGLE_API_KEY
+from services.api import GOOGLE_API_KEY, ORS_API_KEY
 from services.weather_service import WeatherService #imports the Weather class from src.services.weather_service
 from services.api import WEATHER_API_KEY #imports the api key from src.services.api
 from services.routes_service import RouteService
+from algorithm.route_generator import RouteGenerator
+from services.ORS_routes_service import ORSService
+
+
+
 
 st.title('AI-Running-Route-Creator')
 
@@ -47,12 +52,17 @@ st.divider()
 
 #st.divider()
 
+distance_float = 0
+
 st.header('Distance (text input)')
 distance = st.text_input('Desired distance (in miles)')
 
 alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 special_characters = string.punctuation.replace(".", "")
 if distance:
+
+    distance_float = float(distance)
+
     has_letter = False
     has_spec = False
     extra_dot = False
@@ -92,14 +102,15 @@ st.header('Map Data Testing')
 map_service = MapService(GOOGLE_API_KEY)
 weather_service = WeatherService(WEATHER_API_KEY)
 route_service = RouteService(GOOGLE_API_KEY)
+ors_service = ORSService(ORS_API_KEY)
 
 address_origin = st.text_input("Enter origin address")
-address_destination = st.text_input("Enter destination address")
+#address_destination = st.text_input("Enter destination address")
 
 origin_lat = None
-destination_lat = None
+#destination_lat = None
 origin_long = None
-destination_long = None
+#destination_long = None
 
 #def display_weather(weather_data, location_name)
 #future zach, for the large print bodies of code that provide basically the same info, make this definition
@@ -139,7 +150,7 @@ else:
 
 
 
-if address_destination:
+#if address_destination:
 
     maps_data_response_dest = map_service.get_coordinates(address_destination)
 
@@ -158,59 +169,55 @@ if address_destination:
         st.write(f'UV: {weather_data_response_dest['current']['uv']}')  # prints the current uv index
 
         map_data_vis ={
-                "lat": [origin_lat, destination_lat],
-                "lon": [origin_long, destination_long],
+                "lat": [origin_lat],
+                "lon": [origin_long],
         }
         st.map(map_data_vis)
     else:
-        st.error('Please enter a valid origin address (must be exact)')
+        st.error('Please enter a valid destination address (must be exact)')
         st.stop()
 
-else:
-    st.error('Please enter a valid destination address (must be exact)')
-    st.stop()
+#data = {
+#    "origin": {
+ #       "location": {
+ #           "latLng": {
+ #               "latitude": origin_lat,
+ #               "longitude": origin_long
+ #           }
+ #       }
+  #  },
 
-data = {
-    "origin": {
-        "location": {
-            "latLng": {
-                "latitude": origin_lat,
-                "longitude": origin_long
-            }
-        }
-    },
+ #   "destination": {
+#        "location": {
+ #           "latLng": {
+  #              "latitude": destination_lat,
+  #              "longitude": destination_long
+  #          }
+#        }
+ #   },
 
-    "destination": {
-        "location": {
-            "latLng": {
-                "latitude": destination_lat,
-                "longitude": destination_long
-            }
-        }
-    },
-
-        "travelMode": "WALK"
-}
+ #       "travelMode": "WALK"
+#}
 
 
-routes_data_response = route_service.get_route(data)
+#routes_data_response = route_service.get_route(data)
 
-if routes_data_response:
-    meters = int(routes_data_response['routes'][0]['distanceMeters'])
-    miles = round(meters / 1609.344, 2)
+#if routes_data_response:
+#    meters = int(routes_data_response['routes'][0]['distanceMeters'])
+#    miles = round(meters / 1609.344, 2)
 
-    print(f'Distance: {miles} mi')
-    st.write(f'Distance: {miles} mi')
+#    print(f'Distance: {miles} mi')
+#    st.write(f'Distance: {miles} mi')
 
-    duration = int(routes_data_response['routes'][0]['duration'][0:-1])
+#    duration = int(routes_data_response['routes'][0]['duration'][0:-1])
 
-    seconds = duration % 60
-    minutes = duration // 60
+#    seconds = duration % 60
+#    minutes = duration // 60
 
-    print(f'Time: {minutes} minutes and {seconds} seconds')
-    st.write(f'Time: {minutes} minutes and {seconds} seconds')
-else:
-    st.error("Could not calculate a route.")
+#    print(f'Time: {minutes} minutes and {seconds} seconds')
+#    st.write(f'Time: {minutes} minutes and {seconds} seconds')
+#else:
+#    st.error("Could not calculate a route.")
 
 #streamlit run src/app.py
 
@@ -231,3 +238,50 @@ else:
 #st.divider()
 
 
+
+
+
+route_generator = RouteGenerator(ors_service)
+if distance_float <= 3:
+    route_data = route_generator.generate_small_loop(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+elif 3 < distance_float <= 6:
+    route_data = route_generator.generate_long_loop(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+elif 6 < distance_float <= 12:
+    route_data = route_generator.generate_longer_loop(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+elif 12 < distance_float <= 20:
+    route_data = route_generator.generate_super_loop(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+elif 20 < distance_float <= 30:
+    route_data = route_generator.generate_ultra_loop(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+
+if route_data is None:
+    st.error("Could not generate route.")
+    st.stop()
+
+print(route_data)
+distance_meters = route_data['routes'][0]['summary']['distance']
+distance_miles = distance_meters / 1609.34
+print(distance_miles)
+duration_minutes = route_data['routes'][0]['summary']['duration'] / 60
+print(duration_minutes)
+polyline = route_data['routes'][0]['geometry']
+print(polyline)

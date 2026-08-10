@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c88a604-1c9f-4952-91ba-df8d57285601" name="Changes" comment="Further website development, bringing weather_data AND route_data functionality over to the website. The website now can find the distance and time it would take to walk between two coordinates, AND shows both coordinate points on a map widget. Website now looks more polished.">
-      <change afterPath="$PROJECT_DIR$/archive/map_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/route_data.py" afterDir="false" />
+    <list default="true" id="2c88a604-1c9f-4952-91ba-df8d57285601" name="Changes" comment="Changed each data file to be more organized and have explanations. However, archive directory was created, and stores the data files which are now unnecessary due to the app.py taking their functionality. app.py now has a lot more crash prevention and is way more organized. Other minor fixes were done to the services.">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/algorithm/route_scoring.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/algorithm/route_validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/route_data_ORS.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/ORS_routes_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archive/map_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/archive/map_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/map_data.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/route_data.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/weather_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/archive/weather_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/map_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/map_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/routes_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/routes_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/weather_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/weather_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/maps_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/maps_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/routes_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/routes_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scoring.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/route_generator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +40,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5,
@@ -61,18 +58,22 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.api.executor": "Run",
-    "Python.app.executor": "Debug",
+    "Python.app.executor": "Run",
     "Python.main.executor": "Run",
     "Python.map stuff.executor": "Run",
     "Python.map_data.executor": "Run",
     "Python.maps_test.executor": "Run",
+    "Python.route_data (1).executor": "Run",
     "Python.route_data.executor": "Run",
+    "Python.route_data_ORS.executor": "Run",
+    "Python.route_generator.executor": "Run",
     "Python.routes_test.executor": "Run",
     "Python.weather_data.executor": "Run",
     "Python.weather_service.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "run.code.analysis.last.selected.profile": "aDefault"
@@ -80,6 +81,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\zacha\PycharmProjects\ai-route-creator\src\algorithm" />
       <recent name="C:\Users\zacha\PycharmProjects\ai-route-creator\archive" />
       <recent name="C:\Users\zacha\PycharmProjects\ai-route-creator\src\services" />
     </key>
@@ -108,7 +110,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="map_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="route_data (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ai-route-creator" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -117,12 +119,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/models" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/archive" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="C:\Users\zacha\PycharmProjects\ai-route-creator\archive\map_data.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/archive/route_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -154,30 +156,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="routes_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="ai-route-creator" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/routes_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="weather_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="route_data_ORS" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ai-route-creator" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -191,7 +170,30 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="C:\Users\zacha\PycharmProjects\ai-route-creator\archive\weather_data.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/models/route_data_ORS.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="route_generator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ai-route-creator" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/algorithm" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/algorithm/route_generator.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -203,10 +205,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.app" />
+        <item itemvalue="Python.route_generator" />
+        <item itemvalue="Python.route_data_ORS" />
+        <item itemvalue="Python.route_data (1)" />
         <item itemvalue="Python.route_data" />
-        <item itemvalue="Python.map_data" />
-        <item itemvalue="Python.routes_test" />
-        <item itemvalue="Python.weather_data" />
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +291,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786161154497</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Changed each data file to be more organized and have explanations. However, archive directory was created, and stores the data files which are now unnecessary due to the app.py taking their functionality. app.py now has a lot more crash prevention and is way more organized. Other minor fixes were done to the services.">
+      <option name="closed" value="true" />
+      <created>1786224739416</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1786224739416</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -312,6 +322,7 @@
     <MESSAGE value="Further putting together the Streamlit site. Coming together nicely, will likely integrate maps and APIs tomorrow." />
     <MESSAGE value="Website development stage, bringing map_data functionality over to the website. Created Map_Service class because I forgot to for the maps data." />
     <MESSAGE value="Further website development, bringing weather_data AND route_data functionality over to the website. The website now can find the distance and time it would take to walk between two coordinates, AND shows both coordinate points on a map widget. Website now looks more polished." />
-    <option name="LAST_COMMIT_MESSAGE" value="Further website development, bringing weather_data AND route_data functionality over to the website. The website now can find the distance and time it would take to walk between two coordinates, AND shows both coordinate points on a map widget. Website now looks more polished." />
+    <MESSAGE value="Changed each data file to be more organized and have explanations. However, archive directory was created, and stores the data files which are now unnecessary due to the app.py taking their functionality. app.py now has a lot more crash prevention and is way more organized. Other minor fixes were done to the services." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed each data file to be more organized and have explanations. However, archive directory was created, and stores the data files which are now unnecessary due to the app.py taking their functionality. app.py now has a lot more crash prevention and is way more organized. Other minor fixes were done to the services." />
   </component>
 </project>

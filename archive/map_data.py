@@ -41,7 +41,7 @@ while True: #this is placed here to allow the program to stop when the input add
 
         destination_lat = maps_destination_data_response["results"][0]["geometry"]["location"]["lat"] #latitude of the destination address is stored in variable destination_lat so it can be used if needed
         destination_long = maps_destination_data_response["results"][0]["geometry"]["location"]["lng"] #longitude of the destination address is stored in variable destination_lat so it can be used if needed
-
+        break
     else: #runs if 'results' DNE
         print("Destination address not found, try again")
         break #ends program
