@@ -243,45 +243,82 @@ else:
 
 route_generator = RouteGenerator(ors_service)
 if distance_float <= 3:
-    route_data = route_generator.generate_small_loop(
+    route_data_sec1 = route_generator.generate_small_loop_sec1(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+    route_data_sec2 = route_generator.generate_small_loop_sec2(
         origin_lat,
         origin_long,
         distance_float
     )
 elif 3 < distance_float <= 6:
-    route_data = route_generator.generate_long_loop(
+    route_data_sec1 = route_generator.generate_long_loop_sec1(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+    route_data_sec2 = route_generator.generate_long_loop_sec2(
         origin_lat,
         origin_long,
         distance_float
     )
 elif 6 < distance_float <= 12:
-    route_data = route_generator.generate_longer_loop(
+    route_data_sec1 = route_generator.generate_longer_loop_sec1(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+    route_data_sec2 = route_generator.generate_longer_loop_sec2(
         origin_lat,
         origin_long,
         distance_float
     )
 elif 12 < distance_float <= 20:
-    route_data = route_generator.generate_super_loop(
+    route_data_sec1 = route_generator.generate_super_loop_sec1(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+    route_data_sec2 = route_generator.generate_super_loop_sec2(
         origin_lat,
         origin_long,
         distance_float
     )
 elif 20 < distance_float <= 30:
-    route_data = route_generator.generate_ultra_loop(
+    route_data_sec1 = route_generator.generate_ultra_loop_sec1(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+    route_data_sec2 = route_generator.generate_ultra_loop_sec2(
         origin_lat,
         origin_long,
         distance_float
     )
 
-if route_data is None:
+if route_data_sec1 is None:
+    st.error("Could not generate route.")
+    st.stop()
+if route_data_sec2 is None:
     st.error("Could not generate route.")
     st.stop()
 
-print(route_data)
-distance_meters = route_data['routes'][0]['summary']['distance']
-distance_miles = distance_meters / 1609.34
-print(distance_miles)
-duration_minutes = route_data['routes'][0]['summary']['duration'] / 60
-print(duration_minutes)
-polyline = route_data['routes'][0]['geometry']
-print(polyline)
+print(route_data_sec1)
+distance_meters_sec1 = route_data_sec1['routes'][0]['summary']['distance']
+distance_miles_sec1 = distance_meters_sec1 / 1609.34
+print(distance_miles_sec1)
+duration_minutes_sec1 = route_data_sec1['routes'][0]['summary']['duration'] / 60
+print(duration_minutes_sec1)
+polyline_sec1 = route_data_sec1['routes'][0]['geometry']
+print(polyline_sec1)
+
+print(route_data_sec2)
+distance_meters_sec2 = route_data_sec2['routes'][0]['summary']['distance']
+distance_miles_sec2 = distance_meters_sec2 / 1609.34
+print(distance_miles_sec2)
+duration_minutes_sec2 = route_data_sec2['routes'][0]['summary']['duration'] / 60
+print(duration_minutes_sec2)
+polyline_sec2 = route_data_sec2['routes'][0]['geometry']
+print(polyline_sec2)

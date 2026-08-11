@@ -4,20 +4,23 @@ class RouteGenerator:
     def __init__(self, route_service):
         self.ors_service = route_service
 
-    def generate_small_loop(self, origin_lat, origin_long, target_distance):
+    def generate_small_loop_sec1(self, origin_lat, origin_long, target_distance):
         if target_distance <= 0:
             raise ValueError("Target distance must be greater than 0")
         #scenario 1 code
         #0.002187 degrees ~= 0.15mi
+        offset = 1
         distance_miles = 0
-        offset_lat = 0.000725
-        offset_long = 0.000875
-        max_attempts = 20
+
+        max_attempts = 15
         attempts = 0
 
         while distance_miles < target_distance and attempts < max_attempts:
 
-            attempts += 1
+            offset_lat = 0.000725 * offset
+            offset_long = 0.000875 * offset
+
+
 
             origin = [origin_long, origin_lat]
 
@@ -53,18 +56,23 @@ class RouteGenerator:
             if distance_miles >= target_distance:
                 return route_data
 
-            offset_lat += 0.000725
-            offset_long += 0.000875
+            attempts += 1
+            offset += 1
 
-    def generate_long_loop(self, origin_lat, origin_long, target_distance):
+    def generate_long_loop_sec1(self, origin_lat, origin_long, target_distance):
         if target_distance <= 0:
             raise ValueError("Target distance must be greater than 0")
         # scenario 1 code
         # 0.002187 degrees ~= 0.15mi
+        offset = 1
         distance_miles = 0
-        offset_lat = 0.00145
-        offset_long = 0.00175
-        while distance_miles < target_distance:
+
+        max_attempts = 15
+        attempts = 0
+        while distance_miles < target_distance and attempts < max_attempts:
+
+            offset_lat = 0.00145 * offset
+            offset_long = 0.00175 * offset
 
             origin = [origin_long, origin_lat]
 
@@ -91,8 +99,7 @@ class RouteGenerator:
 
             if route_data is None:
                 print("Invalid route at offset")
-                offset_lat += 0.00145
-                offset_long += 0.00175
+                offset += 1
                 continue
 
             distance_meters = route_data['routes'][0]['summary']['distance']
@@ -100,18 +107,23 @@ class RouteGenerator:
             if distance_miles >= target_distance:
                 return route_data
 
-            offset_lat += 0.00145
-            offset_long += 0.00175
+            attempts += 1
+            offset += 1
 
-    def generate_longer_loop(self, origin_lat, origin_long, target_distance):
+    def generate_longer_loop_sec1(self, origin_lat, origin_long, target_distance):
         if target_distance <= 0:
             raise ValueError("Target distance must be greater than 0")
         # scenario 1 code
         # 0.002187 degrees ~= 0.15mi
+        offset = 1
         distance_miles = 0
-        offset_lat = 0.0029
-        offset_long = 0.0035
-        while distance_miles < target_distance:
+
+        max_attempts = 15
+        attempts = 0
+        while distance_miles < target_distance and attempts < max_attempts:
+
+            offset_lat = 0.0029 * offset
+            offset_long = 0.0035 * offset
 
             origin = [origin_long, origin_lat]
 
@@ -138,8 +150,7 @@ class RouteGenerator:
 
             if route_data is None:
                 print("Invalid route at offset")
-                offset_lat += 0.0029
-                offset_long += 0.0035
+                offset += 1
                 continue
 
             distance_meters = route_data['routes'][0]['summary']['distance']
@@ -148,18 +159,23 @@ class RouteGenerator:
             if distance_miles >= target_distance:
                 return route_data
 
-            offset_lat += 0.0029
-            offset_long += 0.0035
+            attempts += 1
+            offset += 1
 
-    def generate_super_loop(self, origin_lat, origin_long, target_distance):
+    def generate_super_loop_sec1(self, origin_lat, origin_long, target_distance):
         if target_distance <= 0:
             raise ValueError("Target distance must be greater than 0")
         # scenario 1 code
         # 0.002187 degrees ~= 0.15mi
+        offset = 1
         distance_miles = 0
-        offset_lat = 0.0058
-        offset_long = 0.007
-        while distance_miles < target_distance:
+
+        max_attempts = 15
+        attempts = 0
+        while distance_miles < target_distance and attempts < max_attempts:
+
+            offset_lat = 0.0058 * offset
+            offset_long = 0.007 * offset
 
             origin = [origin_long, origin_lat]
 
@@ -186,8 +202,7 @@ class RouteGenerator:
 
             if route_data is None:
                 print("Invalid route at offset")
-                offset_lat += 0.0058
-                offset_long += 0.007
+                offset += 1
                 continue
 
             distance_meters = route_data['routes'][0]['summary']['distance']
@@ -195,19 +210,23 @@ class RouteGenerator:
 
             if distance_miles >= target_distance:
                 return route_data
+            attempts += 1
+            offset += 1
 
-            offset_lat += 0.0058
-            offset_long += 0.007
-
-    def generate_ultra_loop(self, origin_lat, origin_long, target_distance):
+    def generate_ultra_loop_sec1(self, origin_lat, origin_long, target_distance):
         if target_distance <= 0:
             raise ValueError("Target distance must be greater than 0")
         # scenario 1 code
         # 0.002187 degrees ~= 0.15mi
+        offset = 1
         distance_miles = 0
-        offset_lat = 0.0116
-        offset_long = 0.014
-        while distance_miles < target_distance:
+
+        max_attempts = 15
+        attempts = 0
+        while distance_miles < target_distance and attempts < max_attempts:
+
+            offset_lat = 0.0116 * offset
+            offset_long = 0.014 * offset
 
             origin = [origin_long, origin_lat]
 
@@ -234,8 +253,166 @@ class RouteGenerator:
 
             if route_data is None:
                 print("Invalid route at offset")
-                offset_lat += 0.0116
-                offset_long += 0.014
+                offset += 1
+                continue
+
+            distance_meters = route_data['routes'][0]['summary']['distance']
+            distance_miles = distance_meters / 1609.34
+
+            if distance_miles >= target_distance:
+                return route_data
+            attempts += 1
+            offset += 1
+
+
+
+
+    def generate_small_loop_sec2(self, origin_lat, origin_long, target_distance):
+
+        if target_distance <= 0:
+            raise ValueError("Target distance must be greater than 0")
+        # scenario 2 code
+        # 0.002187 degrees ~= 0.15mi
+        offset = 1
+        distance_miles = 0
+
+        max_attempts = 15
+        attempts = 0
+
+        while distance_miles < target_distance and attempts < max_attempts:
+
+            offset_lat = 0.000725 * offset
+            offset_long = 0.000875 * offset
+
+            origin = [origin_long, origin_lat]
+
+            north_pt = [origin_long, origin_lat + offset_lat]
+            south_pt = [origin_long, origin_lat - offset_lat]
+
+            northeast_pt = [origin_long + offset_long, origin_lat + offset_lat]
+            southeast_pt = [origin_long + offset_long, origin_lat - offset_lat]
+
+            route_points = [
+                origin,
+                north_pt,
+                northeast_pt,
+                southeast_pt,
+                south_pt,
+                origin
+            ]
+
+            data = {
+                "coordinates": route_points
+            }
+
+            route_data = self.ors_service.ors_get_route(data)
+
+            if route_data is None:
+                print("Invalid route at offset")
+                offset_lat += 0.000725
+                offset_long += 0.000875
+                continue
+
+            distance_meters = route_data['routes'][0]['summary']['distance']
+            distance_miles = distance_meters / 1609.34
+            if distance_miles >= target_distance:
+                return route_data
+
+            attempts += 1
+            offset += 1
+
+    def generate_long_loop_sec2(self, origin_lat, origin_long, target_distance):
+        if target_distance <= 0:
+            raise ValueError("Target distance must be greater than 0")
+        # scenario 1 code
+        # 0.002187 degrees ~= 0.15mi
+        offset = 1
+        distance_miles = 0
+
+        max_attempts = 15
+        attempts = 0
+        while distance_miles < target_distance and attempts < max_attempts:
+
+            offset_lat = 0.00145 * offset
+            offset_long = 0.00175 * offset
+
+            origin = [origin_long, origin_lat]
+
+            north_pt = [origin_long, origin_lat + offset_lat]
+            south_pt = [origin_long, origin_lat - offset_lat]
+
+            northeast_pt = [origin_long + offset_long, origin_lat + offset_lat]
+            southeast_pt = [origin_long + offset_long, origin_lat - offset_lat]
+
+            route_points = [
+                origin,
+                north_pt,
+                northeast_pt,
+                southeast_pt,
+                south_pt,
+                origin
+            ]
+
+            data = {
+                "coordinates": route_points
+            }
+
+            route_data = self.ors_service.ors_get_route(data)
+
+            if route_data is None:
+                print("Invalid route at offset")
+                offset += 1
+                continue
+
+            distance_meters = route_data['routes'][0]['summary']['distance']
+            distance_miles = distance_meters / 1609.34
+            if distance_miles >= target_distance:
+                return route_data
+
+            attempts += 1
+            offset += 1
+
+    def generate_longer_loop_sec2(self, origin_lat, origin_long, target_distance):
+        if target_distance <= 0:
+            raise ValueError("Target distance must be greater than 0")
+        # scenario 1 code
+        # 0.002187 degrees ~= 0.15mi
+        offset = 1
+        distance_miles = 0
+
+        max_attempts = 15
+        attempts = 0
+        while distance_miles < target_distance and attempts < max_attempts:
+
+            offset_lat = 0.0029 * offset
+            offset_long = 0.0035 * offset
+
+            origin = [origin_long, origin_lat]
+
+            north_pt = [origin_long, origin_lat + offset_lat]
+            south_pt = [origin_long, origin_lat - offset_lat]
+
+            northeast_pt = [origin_long + offset_long, origin_lat + offset_lat]
+            southeast_pt = [origin_long + offset_long, origin_lat - offset_lat]
+
+            route_points = [
+                origin,
+                north_pt,
+                northeast_pt,
+                southeast_pt,
+                south_pt,
+                origin
+            ]
+
+            data = {
+                "coordinates": route_points
+            }
+
+            route_data = self.ors_service.ors_get_route(data)
+
+            if route_data is None:
+                print("Invalid route at offset")
+                offset += 1
                 continue
 
             distance_meters = route_data['routes'][0]['summary']['distance']
@@ -244,5 +421,107 @@ class RouteGenerator:
             if distance_miles >= target_distance:
                 return route_data
 
-            offset_lat += 0.0116
-            offset_long += 0.014
+            attempts += 1
+            offset += 1
+
+    def generate_super_loop_sec2(self, origin_lat, origin_long, target_distance):
+        if target_distance <= 0:
+            raise ValueError("Target distance must be greater than 0")
+        # scenario 1 code
+        # 0.002187 degrees ~= 0.15mi
+        offset = 1
+        distance_miles = 0
+
+        max_attempts = 15
+        attempts = 0
+        while distance_miles < target_distance and attempts < max_attempts:
+
+            offset_lat = 0.0058 * offset
+            offset_long = 0.007 * offset
+
+            origin = [origin_long, origin_lat]
+
+            north_pt = [origin_long, origin_lat + offset_lat]
+            south_pt = [origin_long, origin_lat - offset_lat]
+
+            northeast_pt = [origin_long + offset_long, origin_lat + offset_lat]
+            southeast_pt = [origin_long + offset_long, origin_lat - offset_lat]
+
+            route_points = [
+                origin,
+                north_pt,
+                northeast_pt,
+                southeast_pt,
+                south_pt,
+                origin
+            ]
+
+            data = {
+                "coordinates": route_points
+            }
+
+            route_data = self.ors_service.ors_get_route(data)
+
+            if route_data is None:
+                print("Invalid route at offset")
+                offset += 1
+                continue
+
+            distance_meters = route_data['routes'][0]['summary']['distance']
+            distance_miles = distance_meters / 1609.
+
+            if distance_miles >= target_distance:
+                return route_data
+            attempts += 1
+            offset += 1
+
+    def generate_ultra_loop_sec2(self, origin_lat, origin_long, target_distance):
+        if target_distance <= 0:
+            raise ValueError("Target distance must be greater than 0")
+        # scenario 1 code
+        # 0.002187 degrees ~= 0.15mi
+        offset = 1
+        distance_miles = 0
+
+        max_attempts = 15
+        attempts = 0
+        while distance_miles < target_distance and attempts < max_attempts:
+
+            offset_lat = 0.0116 * offset
+            offset_long = 0.014 * offset
+
+            origin = [origin_long, origin_lat]
+
+            north_pt = [origin_long, origin_lat + offset_lat]
+            south_pt = [origin_long, origin_lat - offset_lat]
+
+            northeast_pt = [origin_long + offset_long, origin_lat + offset_lat]
+            southeast_pt = [origin_long + offset_long, origin_lat - offset_lat]
+
+            route_points = [
+                origin,
+                north_pt,
+                northeast_pt,
+                southeast_pt,
+                south_pt,
+                origin
+            ]
+
+            data = {
+                "coordinates": route_points
+            }
+
+            route_data = self.ors_service.ors_get_route(data)
+
+            if route_data is None:
+                print("Invalid route at offset")
+                offset += 1
+                continue
+
+            distance_meters = route_data['routes'][0]['summary']['distance']
+            distance_miles = distance_meters / 1609.34
+
+            if distance_miles >= target_distance:
+                return route_data
+            attempts += 1
+            offset += 1
