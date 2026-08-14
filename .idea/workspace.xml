@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c88a604-1c9f-4952-91ba-df8d57285601" name="Changes" comment="Created the service for creating routes with, which is similar to the Google Routes API, but is free and used more for walking/running routes. Route data for ORS was also created for small tests. Created the first working prototype of the route generator algorithm and coded it into the website. Getting very close to the first version release.">
+    <list default="true" id="2c88a604-1c9f-4952-91ba-df8d57285601" name="Changes" comment="Coded the full second algorithm for finding routes, gives a second, possibly more accurate mileage. Also simplified some code in the route_generator algorithms so there was not an excess of repeatedly used integers.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithm/route_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/route_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithm/route_scoring.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/route_scoring.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,31 +49,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.api.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.map stuff.executor&quot;: &quot;Run&quot;,
-    &quot;Python.map_data.executor&quot;: &quot;Run&quot;,
-    &quot;Python.maps_test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.route_data (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.route_data.executor&quot;: &quot;Run&quot;,
-    &quot;Python.route_data_ORS.executor&quot;: &quot;Run&quot;,
-    &quot;Python.route_generator.executor&quot;: &quot;Run&quot;,
-    &quot;Python.routes_test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.weather_data.executor&quot;: &quot;Run&quot;,
-    &quot;Python.weather_service.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.api.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.map stuff.executor": "Run",
+    "Python.map_data.executor": "Run",
+    "Python.maps_test.executor": "Run",
+    "Python.route_data (1).executor": "Run",
+    "Python.route_data.executor": "Run",
+    "Python.route_data_ORS.executor": "Run",
+    "Python.route_generator.executor": "Run",
+    "Python.route_scoring.executor": "Run",
+    "Python.routes_test.executor": "Run",
+    "Python.weather_data.executor": "Run",
+    "Python.weather_service.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "run.code.analysis.last.selected.profile": "aDefault"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\zacha\PycharmProjects\ai-route-creator\src\algorithm" />
@@ -80,7 +82,7 @@
       <recent name="C:\Users\zacha\PycharmProjects\ai-route-creator\src\services" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app">
+  <component name="RunManager" selected="Python.route_scoring">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ai-route-creator" />
       <option name="ENV_FILES" value="" />
@@ -119,29 +121,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/archive/route_data.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="route_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="ai-route-creator" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="C:\Users\zacha\PycharmProjects\ai-route-creator\archive\route_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -196,13 +175,36 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="route_scoring" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ai-route-creator" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/algorithm" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/algorithm/route_scoring.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.route_scoring" />
         <item itemvalue="Python.app" />
         <item itemvalue="Python.route_generator" />
         <item itemvalue="Python.route_data_ORS" />
         <item itemvalue="Python.route_data (1)" />
-        <item itemvalue="Python.route_data" />
       </list>
     </recent_temporary>
   </component>
@@ -301,7 +303,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786327418184</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Coded the full second algorithm for finding routes, gives a second, possibly more accurate mileage. Also simplified some code in the route_generator algorithms so there was not an excess of repeatedly used integers.">
+      <option name="closed" value="true" />
+      <created>1786412648380</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1786412648380</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -326,6 +336,7 @@
     <MESSAGE value="Further website development, bringing weather_data AND route_data functionality over to the website. The website now can find the distance and time it would take to walk between two coordinates, AND shows both coordinate points on a map widget. Website now looks more polished." />
     <MESSAGE value="Changed each data file to be more organized and have explanations. However, archive directory was created, and stores the data files which are now unnecessary due to the app.py taking their functionality. app.py now has a lot more crash prevention and is way more organized. Other minor fixes were done to the services." />
     <MESSAGE value="Created the service for creating routes with, which is similar to the Google Routes API, but is free and used more for walking/running routes. Route data for ORS was also created for small tests. Created the first working prototype of the route generator algorithm and coded it into the website. Getting very close to the first version release." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created the service for creating routes with, which is similar to the Google Routes API, but is free and used more for walking/running routes. Route data for ORS was also created for small tests. Created the first working prototype of the route generator algorithm and coded it into the website. Getting very close to the first version release." />
+    <MESSAGE value="Coded the full second algorithm for finding routes, gives a second, possibly more accurate mileage. Also simplified some code in the route_generator algorithms so there was not an excess of repeatedly used integers." />
+    <option name="LAST_COMMIT_MESSAGE" value="Coded the full second algorithm for finding routes, gives a second, possibly more accurate mileage. Also simplified some code in the route_generator algorithms so there was not an excess of repeatedly used integers." />
   </component>
 </project>

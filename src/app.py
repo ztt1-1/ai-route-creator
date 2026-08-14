@@ -7,7 +7,7 @@ from services.api import WEATHER_API_KEY #imports the api key from src.services.
 from services.routes_service import RouteService
 from algorithm.route_generator import RouteGenerator
 from services.ORS_routes_service import ORSService
-
+from algorithm.route_scoring import find_closest_route
 
 
 
@@ -253,6 +253,16 @@ if distance_float <= 3:
         origin_long,
         distance_float
     )
+    route_data_sec3 = route_generator.generate_longer_loop_sec1(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+    route_data_sec4 = route_generator.generate_longer_loop_sec2(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
 elif 3 < distance_float <= 6:
     route_data_sec1 = route_generator.generate_long_loop_sec1(
         origin_lat,
@@ -260,6 +270,16 @@ elif 3 < distance_float <= 6:
         distance_float
     )
     route_data_sec2 = route_generator.generate_long_loop_sec2(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+    route_data_sec3 = route_generator.generate_longer_loop_sec1(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+    route_data_sec4 = route_generator.generate_longer_loop_sec2(
         origin_lat,
         origin_long,
         distance_float
@@ -275,6 +295,16 @@ elif 6 < distance_float <= 12:
         origin_long,
         distance_float
     )
+    route_data_sec3 = route_generator.generate_longer_loop_sec1(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+    route_data_sec4 = route_generator.generate_longer_loop_sec2(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
 elif 12 < distance_float <= 20:
     route_data_sec1 = route_generator.generate_super_loop_sec1(
         origin_lat,
@@ -282,6 +312,16 @@ elif 12 < distance_float <= 20:
         distance_float
     )
     route_data_sec2 = route_generator.generate_super_loop_sec2(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+    route_data_sec3 = route_generator.generate_longer_loop_sec1(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+    route_data_sec4 = route_generator.generate_longer_loop_sec2(
         origin_lat,
         origin_long,
         distance_float
@@ -297,11 +337,27 @@ elif 20 < distance_float <= 30:
         origin_long,
         distance_float
     )
+    route_data_sec3 = route_generator.generate_longer_loop_sec1(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
+    route_data_sec4 = route_generator.generate_longer_loop_sec2(
+        origin_lat,
+        origin_long,
+        distance_float
+    )
 
 if route_data_sec1 is None:
     st.error("Could not generate route.")
     st.stop()
 if route_data_sec2 is None:
+    st.error("Could not generate route.")
+    st.stop()
+if route_data_sec3 is None:
+    st.error("Could not generate route.")
+    st.stop()
+if route_data_sec4 is None:
     st.error("Could not generate route.")
     st.stop()
 
@@ -322,3 +378,37 @@ duration_minutes_sec2 = route_data_sec2['routes'][0]['summary']['duration'] / 60
 print(duration_minutes_sec2)
 polyline_sec2 = route_data_sec2['routes'][0]['geometry']
 print(polyline_sec2)
+
+print(route_data_sec3)
+distance_meters_sec3 = route_data_sec3['routes'][0]['summary']['distance']
+distance_miles_sec3 = distance_meters_sec3 / 1609.34
+print(distance_miles_sec3)
+duration_minutes_sec3 = route_data_sec3['routes'][0]['summary']['duration'] / 60
+print(duration_minutes_sec3)
+polyline_sec3 = route_data_sec3['routes'][0]['geometry']
+print(polyline_sec3)
+
+print(route_data_sec4)
+distance_meters_sec4 = route_data_sec4['routes'][0]['summary']['distance']
+distance_miles_sec4 = distance_meters_sec4 / 1609.34
+print(distance_miles_sec4)
+duration_minutes_sec4 = route_data_sec4['routes'][0]['summary']['duration'] / 60
+print(duration_minutes_sec4)
+polyline_sec4 = route_data_sec4['routes'][0]['geometry']
+print(polyline_sec4)
+
+
+route_distances = [
+    route_data_sec1,
+    route_data_sec2,
+    route_data_sec3,
+    route_data_sec4
+]
+
+closest_difference = find_closest_route(
+    distance_float,
+    route_distances
+)
+
+print(f'{closest_difference[0]['summary']['distance']/1609.34} MILES.')
+print(closest_difference[0]['geometry'])
