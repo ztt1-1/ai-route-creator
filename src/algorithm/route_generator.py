@@ -57,6 +57,8 @@ class RouteGenerator:
                 return route_data
             if target_distance - distance_miles < 0.25:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
@@ -108,8 +110,10 @@ class RouteGenerator:
             distance_miles = distance_meters / 1609.34
             if distance_miles >= target_distance:
                 return route_data
-            if target_distance - distance_miles < 0.25:
+            if target_distance - distance_miles < 0.4:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
@@ -162,8 +166,10 @@ class RouteGenerator:
 
             if distance_miles >= target_distance:
                 return route_data
-            if target_distance - distance_miles < 0.25:
+            if target_distance - distance_miles < 0.75:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
@@ -216,8 +222,10 @@ class RouteGenerator:
 
             if distance_miles >= target_distance:
                 return route_data
-            if target_distance - distance_miles < 0.25:
+            if target_distance - distance_miles < 1.5:
                 return route_data
+            if attempts > max_attempts:
+                break
             attempts += 1
             offset += 1
 
@@ -271,6 +279,8 @@ class RouteGenerator:
                 return route_data
             if target_distance - distance_miles < 3:
                 return route_data
+            if attempts > max_attempts:
+                break
             attempts += 1
             offset += 1
 
@@ -329,6 +339,8 @@ class RouteGenerator:
                 return route_data
             if target_distance - distance_miles < 0.25:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
@@ -380,8 +392,10 @@ class RouteGenerator:
             distance_miles = distance_meters / 1609.34
             if distance_miles >= target_distance:
                 return route_data
-            if target_distance - distance_miles < 0.25:
+            if target_distance - distance_miles < 0.4:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
@@ -434,8 +448,10 @@ class RouteGenerator:
 
             if distance_miles >= target_distance:
                 return route_data
-            if target_distance - distance_miles < 0.25:
+            if target_distance - distance_miles < 0.75:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
@@ -488,8 +504,10 @@ class RouteGenerator:
 
             if distance_miles >= target_distance:
                 return route_data
-            if target_distance - distance_miles < 0.25:
+            if target_distance - distance_miles < 1.5:
                 return route_data
+            if attempts > max_attempts:
+                break
             attempts += 1
             offset += 1
 
@@ -543,6 +561,8 @@ class RouteGenerator:
                 return route_data
             if target_distance - distance_miles < 3:
                 return route_data
+            if attempts > max_attempts:
+                break
             attempts += 1
             offset += 1
 
@@ -603,6 +623,8 @@ class RouteGenerator:
                 return route_data
             if target_distance - distance_miles < 0.25:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
@@ -657,8 +679,10 @@ class RouteGenerator:
             distance_miles = distance_meters / 1609.34
             if distance_miles >= target_distance:
                 return route_data
-            if target_distance - distance_miles < 0.25:
+            if target_distance - distance_miles < 0.4:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
@@ -713,8 +737,10 @@ class RouteGenerator:
             distance_miles = distance_meters / 1609.34
             if distance_miles >= target_distance:
                 return route_data
-            if target_distance - distance_miles < 0.25:
+            if target_distance - distance_miles < 0.75:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
@@ -769,8 +795,10 @@ class RouteGenerator:
             distance_miles = distance_meters / 1609.34
             if distance_miles >= target_distance:
                 return route_data
-            if target_distance - distance_miles < 0.25:
+            if target_distance - distance_miles < 1.5:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
@@ -827,6 +855,8 @@ class RouteGenerator:
                 return route_data
             if target_distance - distance_miles < 3:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
@@ -887,6 +917,8 @@ class RouteGenerator:
                 return route_data
             if target_distance - distance_miles < 0.25:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
@@ -942,8 +974,10 @@ class RouteGenerator:
             distance_miles = distance_meters / 1609.34
             if distance_miles >= target_distance:
                 return route_data
-            if target_distance - distance_miles < 0.25:
+            if target_distance - distance_miles < 0.4:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
@@ -999,8 +1033,10 @@ class RouteGenerator:
             distance_miles = distance_meters / 1609.34
             if distance_miles >= target_distance:
                 return route_data
-            if target_distance - distance_miles < 0.25:
+            if target_distance - distance_miles < 0.75:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
@@ -1056,8 +1092,10 @@ class RouteGenerator:
             distance_miles = distance_meters / 1609.34
             if distance_miles >= target_distance:
                 return route_data
-            if target_distance - distance_miles < 0.25:
+            if target_distance - distance_miles < 1.5:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
@@ -1115,6 +1153,8 @@ class RouteGenerator:
                 return route_data
             if target_distance - distance_miles < 3:
                 return route_data
+            if attempts > max_attempts:
+                break
 
             attempts += 1
             offset += 1
