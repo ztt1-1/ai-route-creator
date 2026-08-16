@@ -7,17 +7,14 @@ class ORSService:
         self.url = "https://api.openrouteservice.org/v2/directions/foot-walking" #the link to the ORS_routes api
 
     def ors_get_route(self, data):
+
         response = requests.post(
             self.url,
             json=data,
-            headers={
-                "Authorization": self.api_key,
-                "Content-Type": "application/json"
-            }
+            headers={"Authorization": self.api_key,"Content-Type": "application/json"}
         )
 
         print("STATUS:", response.status_code)
-        #print("RESPONSE:", response.text)
 
         if response.status_code != 200:
             return None
@@ -26,6 +23,5 @@ class ORSService:
         distance_meters = response_data['routes'][0]['summary']['distance']
         distance_miles = distance_meters / 1609.34
         print(distance_miles)
-
 
         return response_data

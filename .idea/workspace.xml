@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c88a604-1c9f-4952-91ba-df8d57285601" name="Changes" comment="Coded the full third and fourth algorithms for finding routes. Coded route_scoring which gives the closest route (in distance) to what the user requested.">
+    <list default="true" id="2c88a604-1c9f-4952-91ba-df8d57285601" name="Changes" comment="Added a map view of the route to the website and organized app.py code as well as added code to help save chosen results due to how StreamLit reads code.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithm/route_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/route_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithm/route_scoring.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/route_scoring.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/route_data_ORS.py" beforeDir="false" afterPath="$PROJECT_DIR$/archive/route_data_ORS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ORS_routes_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ORS_routes_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,12 +78,12 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\zacha\PycharmProjects\ai-route-creator\src\algorithm" />
       <recent name="C:\Users\zacha\PycharmProjects\ai-route-creator\archive" />
+      <recent name="C:\Users\zacha\PycharmProjects\ai-route-creator\src\algorithm" />
       <recent name="C:\Users\zacha\PycharmProjects\ai-route-creator\src\services" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.route_scoring">
+  <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ai-route-creator" />
       <option name="ENV_FILES" value="" />
@@ -142,7 +144,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/models/route_data_ORS.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\zacha\PycharmProjects\ai-route-creator\archive\route_data_ORS.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -199,8 +201,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.route_scoring" />
         <item itemvalue="Python.app" />
+        <item itemvalue="Python.route_scoring" />
         <item itemvalue="Python.route_generator" />
         <item itemvalue="Python.route_data_ORS" />
         <item itemvalue="Python.route_data (1)" />
@@ -318,7 +320,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786674986491</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added a map view of the route to the website and organized app.py code as well as added code to help save chosen results due to how StreamLit reads code.">
+      <option name="closed" value="true" />
+      <created>1786767906822</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1786767906822</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -345,6 +355,7 @@
     <MESSAGE value="Created the service for creating routes with, which is similar to the Google Routes API, but is free and used more for walking/running routes. Route data for ORS was also created for small tests. Created the first working prototype of the route generator algorithm and coded it into the website. Getting very close to the first version release." />
     <MESSAGE value="Coded the full second algorithm for finding routes, gives a second, possibly more accurate mileage. Also simplified some code in the route_generator algorithms so there was not an excess of repeatedly used integers." />
     <MESSAGE value="Coded the full third and fourth algorithms for finding routes. Coded route_scoring which gives the closest route (in distance) to what the user requested." />
-    <option name="LAST_COMMIT_MESSAGE" value="Coded the full third and fourth algorithms for finding routes. Coded route_scoring which gives the closest route (in distance) to what the user requested." />
+    <MESSAGE value="Added a map view of the route to the website and organized app.py code as well as added code to help save chosen results due to how StreamLit reads code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a map view of the route to the website and organized app.py code as well as added code to help save chosen results due to how StreamLit reads code." />
   </component>
 </project>

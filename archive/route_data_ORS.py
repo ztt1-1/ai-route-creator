@@ -1,5 +1,5 @@
-from src.services.api import ORS_API_KEY #imports the api key for Geocoding API
-from src.services.ORS_routes_service import ORSService #imports Class Map_Service
+from src.services.api import ORS_API_KEY
+from src.services.ORS_routes_service import ORSService
 from archive.map_data import origin_lat, origin_long, destination_lat, destination_long
 
 class_ORS_service = ORSService(ORS_API_KEY)
